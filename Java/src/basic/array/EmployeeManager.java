@@ -137,7 +137,6 @@ public class EmployeeManager {
 						departments[i] = department;
 					} else if(choose == 3) {
 						System.out.println("메인으로 돌아갑니다.");
-						break;
 					} else {
 						System.out.println("잘못된 입력입니다.");
 					}
