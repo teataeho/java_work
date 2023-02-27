@@ -28,8 +28,7 @@ public class EmployeeManager {
 
 			System.out.print("> ");
 			int menu = sc.nextInt();
-			int view = 0;
-			
+
 			if(menu == 1) {
 				//사원 정보 4가지를 입력받아 각 배열에 저장하는 코드를 작성.
 				//사번은 중복되면 안됩니다.
@@ -65,20 +64,20 @@ public class EmployeeManager {
 						break;
 					}
 				}
+
 			} else if(menu == 2) {
 				//각 배열을 반복문을 통해 저장된 데이터까지만 출력하도록 작성. (count)
 				//만약 사용자가 사원 등록을 한 명도 하지 않았다면
 				//"등록된 사원 정보가 없습니다." 를 출력하시면 됩니다.
-				if(count>0) {
-					for(view =0; view < userNums.length ; view++) {
-						if(userNums[view]==null) {//null이면 나감 빈공간 null출력 안하겠다!
+				if(count > 0) {
+					for(int i=0; i<userNums.length; i++) {
+						if(userNums[i] == null) {//null이면 나감 빈공간 null출력 안하겠다!
 							break;
 						}
 						else {
-							System.out.printf("%s %s %d %s\n",userNums[view],names[view],ages[view],departments[view]);
-							System.out.println("=====================================");
+							System.out.printf("%s %s %d %s\n",userNums[i],names[i],ages[i],departments[i]);
+							System.out.println("====================================");
 						}
-
 					}
 				}
 				else {
@@ -90,7 +89,7 @@ public class EmployeeManager {
 				//입력한 사번이 존재하지 않는다면 "조회하신 사원의 정보가 없습니다." 를 출력.
 				System.out.print("조회할 사원의 사번입력 > ");
 				String userNum = sc.next();
-				
+
 				boolean flag = false;
 				for(int i=0; i<userNums.length; i++) {
 					if(userNum.equals(userNums[i])) {
@@ -112,35 +111,39 @@ public class EmployeeManager {
 				//사번 입력 -> 존재하는 사번이 맞다면 -> [1. 나이변경 | 2. 부서변경 | 3.취소]
 				//사번이 존재하지 않는다면 없다고 얘기해 주세요.	
 				System.out.print("변경할 사원의 사번입력 > ");
-                String userNum = sc.next();
-                for(int i =0; i < userNums.length; i++) {
-                    int c=0;
-                    if(userNum.equals(userNums[i])) {
-                        System.out.printf("사번: %s 이름: %s 나이: %d 부서: %s\n",userNums[i],names[i],ages[i],departments[i]);
-                        c++;
-                        System.out.println("1. 나이변경  2. 부서변경  3.취소");
-                        int choose = sc.nextInt();
-                        if(choose == 1) {
-                            System.out.print("나이입력 > ");
-                            int age = sc.nextInt();
-                            ages[i]=age;
-                            break;
-                        } else if(choose == 2) {
-                            System.out.print("부서입력 > ");
-                            String department = sc.next();
-                            departments[i]=department;
-                            break;
-                        } else if(choose == 3) {
-                            System.out.println("메인으로 돌아갑니다.");
-                            break;
-                        } else {
-                            System.out.println("잘못된 입력입니다.");
-                        }
-                    }
-                    if(c == userNums.length)
-                        System.out.println("등록되지않은 사번입니다.");
-                }
-				
+				String userNum = sc.next();
+				int i;
+				boolean flag = false;
+				for(i=0; i<userNums.length; i++) {
+					if(userNum.equals(userNums[i])) {
+						flag = true;
+						break;
+					}
+				}
+				if(!flag) {
+					System.out.println("등록되지않은 사번입니다.");
+					break;
+				} else {
+					System.out.printf("사번:%s 이름:%s 나이:%d 부서:%s\n",userNums[i],names[i],ages[i],departments[i]);
+					System.out.println("1. 나이변경 | 2. 부서변경 | 3.취소");
+					int choose = sc.nextInt();
+					if(choose == 1) {
+						System.out.print("나이입력 > ");
+						int age = sc.nextInt();
+						ages[i] = age;
+					} else if(choose == 2) {
+						System.out.print("부서입력 > ");
+						String department = sc.next();
+						departments[i] = department;
+					} else if(choose == 3) {
+						System.out.println("메인으로 돌아갑니다.");
+						break;
+					} else {
+						System.out.println("잘못된 입력입니다.");
+					}
+
+				}
+
 			} else if(menu == 5) {
 				//사번을 입력받아서
 				//해당 사번과 일치하는 사원의 4가지 정보를 각 배열에서 모두 삭제하고
@@ -150,7 +153,7 @@ public class EmployeeManager {
 				//앞으로 한칸씩 땡기신 다음 count를 하나 내려주시면 됩니다.
 				System.out.print("삭제할 사원의 사번입력 > ");
 				String userNum = sc.next();
-				
+
 				boolean flag = false;
 				int i;
 				for(i=0; i<userNums.length; i++) {
@@ -186,6 +189,7 @@ public class EmployeeManager {
 				System.out.println("프로그램을 종료합니다.");
 				sc.close();
 				break;
+
 			} else {
 				System.out.println("메뉴를 잘못 입력하셨습니다.");
 
