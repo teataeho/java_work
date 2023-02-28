@@ -125,16 +125,15 @@ public class EmployeeManager {
 					break;
 				} else {
 					System.out.printf("사번:%s 이름:%s 나이:%d 부서:%s\n",userNums[i],names[i],ages[i],departments[i]);
-					System.out.println("1. 나이변경 | 2. 부서변경 | 3.취소");
+					System.out.println("[1. 나이변경 | 2. 부서변경 | 3.취소]");
+					System.out.print("> ");
 					int choose = sc.nextInt();
 					if(choose == 1) {
 						System.out.print("나이입력 > ");
-						int age = sc.nextInt();
-						ages[i] = age;
+						ages[i] = sc.nextInt();						
 					} else if(choose == 2) {
 						System.out.print("부서입력 > ");
-						String department = sc.next();
-						departments[i] = department;
+						departments[i] = sc.next();
 					} else if(choose == 3) {
 						System.out.println("메인으로 돌아갑니다.");
 					} else {
@@ -154,36 +153,42 @@ public class EmployeeManager {
 				String userNum = sc.next();
 
 				boolean flag = false;
-				int i;
-				for(i=0; i<userNums.length; i++) {
+				for(int i=0; i<count; i++) {
 					if(userNum.equals(userNums[i])) {
 						System.out.println("정말 삭제하시겠습니까? [Y/N]");
+						String yesOrNo = sc.next();
+
+						switch(yesOrNo) {
+						case "N": case "n":
+							System.out.println("아니요를 선택하셨습니다.");
+							break;
+						case "Y": case "y":
+							if(i == userNums.length-1) {
+								userNums[i] = null;
+								names[i] = null;
+								ages[i] = 0;
+								departments[i] = null;
+							}
+							for(int j=i; j<count-1; j++) {
+								userNums[j] = userNums[j + 1];
+								names[j] = names[j + 1];
+								ages[j] = ages[j + 1];
+								departments[j] = departments[j + 1];
+							}
+							count--;
+							break;
+						default :
+							System.out.println("잘못된 입력입니다.");
+						} // switch end
+
 						flag = true;
 						break;
 					}
 				}
 				if(!flag) {
 					System.out.println("해당되는 사원의 정보가 없습니다.");
-				} else {
-					String yesOrNo = sc.next();
-					switch(yesOrNo) {
-					case "N": case "n":
-						System.out.println("아니요를 선택하셨습니다.");
-						break;
-					case "Y": case "y":
-						for(int j=i; j<userNums.length-1; j++) {
-							userNums[j] = userNums[j + 1];
-							names[j] = names[j + 1];
-							ages[j] = ages[j + 1];
-							departments[j] = departments[j + 1];
-						}
-						count--;
-						break;
-					default :
-						System.out.println("잘못된 입력입니다.");
-					} // switch end
-				} // else end
-
+				}
+				
 			} else if(menu == 6) {
 				System.out.println("프로그램을 종료합니다.");
 				sc.close();
