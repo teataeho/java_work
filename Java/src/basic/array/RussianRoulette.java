@@ -78,7 +78,6 @@ public class RussianRoulette {
 			}
 			bulletPos[rn] = true;		
 		}
-		System.out.println(Arrays.toString(bulletPos));
 
 		//실행 순서 정하기
 		//난수를 이용해서 실행 순서를 정합니다.
@@ -133,7 +132,6 @@ public class RussianRoulette {
 					}
 					bulletPos[rn] = true;		
 				} // 총알섞기 end
-				System.out.println(Arrays.toString(bulletPos));
 				realBulletPos = 0;
 			} // 발사될때 end
 			if(numPeople == 1 || numBullet == 0) {
