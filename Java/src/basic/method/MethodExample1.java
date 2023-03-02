@@ -35,7 +35,12 @@ public class MethodExample1 {
 
 	public static void main(String[] args) {
 		
+		int total = calcTotal(100);
+		System.out.println(total);
 		
+		
+		System.out.println("1~100까지의 누적합: " + calcTotal(100));
+		System.out.println("1~200까지의 누적합: " + calcTotal(200));
 
 	}
 
