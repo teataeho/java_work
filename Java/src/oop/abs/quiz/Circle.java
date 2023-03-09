@@ -2,7 +2,7 @@ package oop.abs.quiz;
 
 public class Circle extends Shape {
 	
-	int radius;
+	private int radius;
 
 	public Circle(String name, int radius) {
 		super(name);
