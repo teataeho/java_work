@@ -17,8 +17,8 @@ public class Score {
 	private int kor;
 	private int eng;
 	private int math;
-	private int total = kor + eng + math;
-	private double avg = (double) total / 3;
+	private int total;
+	private double avg;
 	
 	
 	public Score(String name, int kor, int eng, int math) {
@@ -28,62 +28,50 @@ public class Score {
 		this.math = math;
 		this.total = kor + eng + math;
 		this.avg = (double) total / 3;
-	}
-	
+	}	
 	
 	public String getName() {
 		return name;
 	}
-
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
 	public int getKor() {
 		return kor;
 	}
-
-
-
 	public void setKor(int kor) {
 		this.kor = kor;
 	}
-
-
-
 	public int getEng() {
 		return eng;
 	}
-
-
-
 	public void setEng(int eng) {
 		this.eng = eng;
 	}
-
-
-
 	public int getMath() {
 		return math;
 	}
-
-
-
 	public void setMath(int math) {
 		this.math = math;
 	}
-
-
-
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public double getAvg() {
+		return avg;
+	}
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
+	
 	public void scoreInfo() {
 		System.out.println("***학생 성적***");
-		System.out.printf("이름: %s, 국어: %d, 영어: %d, 수학: %d\n"
+		System.out.printf("이름: %s 국어: %d점 영어: %d점 수학: %d점\n"
 				, name, kor, eng, math);
-		System.out.printf("총점: %d, 평균: %.2f\n", total, avg);
+		System.out.printf("총점: %d 평균: %.2f\n", total, avg);
 	}
 
 }

@@ -29,9 +29,11 @@ public class ScoreMain {
 
 		for(int i=0; i<scores.length; i++) {
 			System.out.println(i+1 + "번째 학생의 정보를 입력해주세요.");
+			System.out.println("'그만'을 입력하시면 종료됩니다.");
 			System.out.print("이름: ");
 			String name = input.next();
 			if(name.equals("그만")) {
+				System.out.println("입력을 종료합니다.");
 				break;
 			}
 			System.out.print("국어: ");
@@ -45,11 +47,9 @@ public class ScoreMain {
 		}
 
 		for(Score s : scores) {
-			try {
-				s.scoreInfo();
-			} catch(Exception e) {
-				break;
-			}
+			if(s == null) break;
+			s.scoreInfo();
+			System.out.println("-----------------------------");
 		}
 
 		input.close();
