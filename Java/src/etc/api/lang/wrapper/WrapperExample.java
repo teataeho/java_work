@@ -31,6 +31,7 @@ public class WrapperExample {
 		//해당 타입으로 변환할 수 없는 문자열을 시도했을 경우
 		//NumberFormatException 예외가 발생합니다.
 		String s2 = "3.14";
+		Integer.parseInt(s2);
 		
 		
 
