@@ -26,18 +26,18 @@ public class LottoSimulator {
 		  중복이 발생하면 안됩니다.
 		 */
 
-		Set<Integer> lotto = new HashSet<>();
+		Set<Integer> rnNums = new HashSet<>();
 
-		while(lotto.size() < 6) {
+		while(rnNums.size() < 6) {
 			int num = r.nextInt(45) + 1;
-			lotto.add(num);
+			rnNums.add(num);
 		}
-		List<Integer> list = new ArrayList<>(lotto);
-		return list;
+		List<Integer> lotto = new ArrayList<>(rnNums);
+		return lotto;
 	}
 
 	//보너스 번호를 생성하는 메서드
-	public static int createBonusNum(List<Integer> list) {
+	public static int createBonusNum(List<Integer> lotto) {
 
 		/*
 		 - 매개값으로 전달되는 당첨 번호 집합을 전달 받으신 후
@@ -49,14 +49,14 @@ public class LottoSimulator {
 		int bonusNum = 0;
 		while(true) {
 			bonusNum = r.nextInt(45) + 1;
-			if(!list.contains(bonusNum)) break;
+			if(!lotto.contains(bonusNum)) break;
 		}
 		return bonusNum;
 
 	}
 
 	//당첨 등수를 알려주는 메서드
-	public static void checkLottoNumber(List<Integer> list, List<Integer> buyNums, int bonusNum) {
+	public static void checkLottoNumber(List<Integer> lotto, List<Integer> buyNums, int bonusNum) {
 		/*
 		 매개값으로 당첨번호, 구매한 로또 번호집합, 보너스번호를 받습니다.
 		 내 로또 번호와 당첨번호를 비교하여
@@ -73,7 +73,7 @@ public class LottoSimulator {
 		int cnt = 0;
 		boolean bonus = false;
 		for(int i : buyNums) {
-			if(list.contains(i)) {
+			if(lotto.contains(i)) {
 				cnt++;
 			}
 			if(buyNums.contains(bonusNum)) {
@@ -128,6 +128,7 @@ public class LottoSimulator {
 
 
 			if(prize1 == 1) {
+				System.out.println("*** 1등 당첨! ***");
 				price = count * 1000L;
 				System.out.println("2등: " + prize2 + "번");
 				System.out.println("3등: " + prize3 + "번");

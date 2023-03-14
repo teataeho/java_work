@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class DateExample {
@@ -36,10 +38,39 @@ public class DateExample {
 		int year = localDateTime.getYear();
 		System.out.println("year: " + year);
 		
+		//월 추출
 		int monthValue = localDateTime.getMonthValue();
 		System.out.println("monthVaule: " + monthValue);
+		
 		Month month = localDateTime.getMonth();
 		System.out.println("month: " + month);
+		
+		System.out.println("-----------------------------------");
+		
+		//지금으로부터 3일 뒤
+		LocalDateTime returnDate = localDateTime.plusDays(3);
+		System.out.println(returnDate);
+		
+		//지금으로부터 1년 2개월 7일 뒤
+		LocalDateTime d1 = localDateTime.plusYears(1).plusMonths(2).plusDays(7);
+		System.out.println(d1);
+		
+		//사이 날짜 연산
+		LocalDate b = LocalDate.of(2020, 12, 30);
+		
+		LocalDate f = LocalDate.of(2022, 9, 14);
+		
+		long between = ChronoUnit.WEEKS.between(b, f);
+		System.out.println("between: " + between);
+		
+		System.out.println("-----------------------------------");
+		//날짜 포맷 변경하기
+		System.out.println(localDateTime);
+		
+		DateTimeFormatter dtf =
+				DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 E요일 a hh시 mm분 ss초");
+		
+		System.out.println(localDateTime.format(dtf));
 
 	}
 
