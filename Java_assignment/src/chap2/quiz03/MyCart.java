@@ -70,15 +70,12 @@ public class MyCart {
 	 */
 	public void info() {
 		int totalPrice = 0;
-		if(cart[0].name == null) {
+		if(cart[0] == null) {
 			System.out.println("장바구니에 상품이 없습니다.");
 		} else {
 			System.out.print("장바구니 목록: ");
 			for(Product p : cart) {
-				if(p == null) {
-
-					break;
-				}
+				if(p == null) break;
 				System.out.print(p.name + " ");
 				totalPrice += p.price;
 			}

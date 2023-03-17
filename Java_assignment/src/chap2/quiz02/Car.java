@@ -9,6 +9,7 @@ public class Car {
 
 	public Car(String model) {
 		this.model = model;
+		System.out.println(this.model + "에 탔습니다.");
 	}
 
 	public void setSpeed(int speed) {
@@ -46,15 +47,15 @@ public class Car {
 		System.out.println("시동이 걸렸습니다.");
 	}
 	
-	public void injectGasoline() {
+	private void injectGasoline() {
 		System.out.println("연료가 엔진에 주입됩니다.");
 	}
 	
-	public void injectOil() {
+	private void injectOil() {
 		System.out.println("엔진오일이 순환합니다.");
 	}
 	
-	public void moveCylinder() {
+	private void moveCylinder() {
 		if(start) {
 			System.out.println("실린더가 움직입니다.");
 		} else {

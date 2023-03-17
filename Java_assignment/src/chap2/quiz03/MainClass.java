@@ -1,7 +1,5 @@
 package chap2.quiz03;
 
-import java.util.Arrays;
-
 public class MainClass {
 
 	public static void main(String[] args) {
@@ -13,9 +11,10 @@ public class MainClass {
 		MyCart cart = new MyCart(5000);
 		cart.buy(computer);
 		cart.buy(tv);
+		cart.buy(computer);
+		cart.buy(computer);
 		cart.buy(radio);
-		cart.buy(computer);
-		cart.buy(computer);
+		
 		
 		cart.info();
 		

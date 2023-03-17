@@ -49,9 +49,9 @@ public class LottoSimulator {
 		int bonusNum = 0;
 		while(true) {
 			bonusNum = r.nextInt(45) + 1;
-			if(!lotto.contains(bonusNum)) break;
+			if(!lotto.contains(bonusNum))
+				return bonusNum;
 		}
-		return bonusNum;
 
 	}
 
@@ -71,28 +71,17 @@ public class LottoSimulator {
 		 */
 
 		int cnt = 0;
-		boolean bonus = false;
 		for(int i : buyNums) {
-			if(lotto.contains(i)) {
-				cnt++;
-			}
-			if(buyNums.contains(bonusNum)) {
-				bonus = true;
-			}
+			if(lotto.contains(i)) cnt++;
 		}
 
-		if(cnt == 6) {
-			prize1++;
-		} else if(cnt == 5) {
-			if(bonus) prize2++;
+		if(cnt == 6) prize1++;
+		else if(cnt == 5) {
+			if(buyNums.contains(bonusNum)) prize2++;
 			else prize3++;
-		} else if(cnt == 4) {
-			prize4++;
-		} else if(cnt == 3) {
-			prize5++;
-		} else {
-			failCnt++;
-		}		
+		} else if(cnt == 4) prize4++;
+		else if(cnt == 3) prize5++;
+		else failCnt++;		
 
 	}
 
@@ -104,7 +93,6 @@ public class LottoSimulator {
 		int bonusNum = createBonusNum(lotto);
 		System.out.println(bonusNum);
 		int count = 0;
-		long price;
 
 		while(true) {
 			/*
@@ -129,13 +117,12 @@ public class LottoSimulator {
 
 			if(prize1 == 1) {
 				System.out.println("*** 1등 당첨! ***");
-				price = count * 1000L;
 				System.out.println("2등: " + prize2 + "번");
 				System.out.println("3등: " + prize3 + "번");
 				System.out.println("4등: " + prize4 + "번");
 				System.out.println("5등: " + prize5 + "번");
 				System.out.println("꽝: " + failCnt + "번");
-				System.out.println("사용한 금액: " + price + "원");
+				System.out.println("사용한 금액: " + count*1000L + "원");
 				break;
 			}
 		}
