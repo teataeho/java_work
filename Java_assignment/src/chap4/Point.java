@@ -151,15 +151,14 @@ public class Point {
 		String stuNum = sc.next();
 		
 		boolean flag = false;
-		int idx = 0;
-		for(Student s : students) {
-			if(s.getStuId().equals(stuNum)) {
+		for(int i=0; i<students.size(); i++) {
+			if(students.get(i).getStuId().equals(stuNum)) {
 				flag = true;
-				System.out.println(s.getName() + "님의 정보를 삭제합니다.[Y / N]");
+				System.out.println(students.get(i).getName() + "님의 정보를 삭제합니다.[Y / N]");
 				char yn = sc.next().charAt(0);
 				switch(yn) {
 				case 'y': case 'Y':
-					students.remove(idx);
+					students.remove(i);
 					break;
 				case 'n': case 'N':
 					System.out.println("삭제를 취소합니다.");
@@ -169,7 +168,6 @@ public class Point {
 				}				
 				break;
 			}
-			idx++;
 		}
 		if(!flag) System.out.println("존재하지 않는 학번입니다.");
 		

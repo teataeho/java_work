@@ -16,9 +16,6 @@ public class MainClass {
 		cart.buy(radio);
 		
 		
-		cart.info();
-		
-		
 
 	}
 

@@ -52,9 +52,12 @@ public class MyCart {
 				temp[j] = cart[j];
 			}
 			cart = temp;
+			temp = null;
 		}		
 		cart[i] = p;
 		i++;
+		
+		info();
 	}
 
 
