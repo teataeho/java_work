@@ -46,7 +46,8 @@ public class Student {
 				this.math = sc.nextInt();
 				break;
 			} catch(Exception e) {
-				continue;
+				System.out.println("점수는 숫자로만 입력하세요!");
+				sc.nextLine();
 			}
 		}
 	}

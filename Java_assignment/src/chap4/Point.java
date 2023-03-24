@@ -1,6 +1,5 @@
 package chap4;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -63,22 +62,18 @@ public class Point {
 		 */
 		
 		showPointUI();
-		int cnt = 0;
-		int averageTotal = 0;
+		double averageTotal = 0.0;
 		for(Student s : students) {
-			cnt++;
 			averageTotal += s.getAverage();
 			s.outputStuInfo();
 		}
-		System.out.println("반 평균 : " + averageTotal / cnt);
+		System.out.println("----------------------------------------------");
+		System.out.printf("반 평균 : %.2f\n", averageTotal / students.size());
 	}
 
 	//3. 개별 성적 조회 로직을 처리할 메서드
 	
 	public void searchPoint(List<Student> students) {
-		System.out.println("성적을 조회할 학생의 학번을 입력하세요.");
-		System.out.print("> ");
-		String stuNum = sc.next();
 		
 		/*
 		 1. 입력받은 학번과 일치하는 학생 객체를 리스트에서 찾아내어
@@ -86,15 +81,14 @@ public class Point {
 		 2. 찾는 학번이 존재하지 않는다면 검색하지 못했다는
 		  메세지를 출력해 주세요.
 		 */
-		boolean flag = false;
-		for(Student s : students) {
-			if(s.getStuId().equals(stuNum)) {
-				s.outputStuInfo();
-				flag = true;
-				break;
-			}
+		Student stu = findInstance("조회", students);
+		if(stu != null) {
+			System.out.printf("%s님의 성적 정보를 출력합니다.\n", stu.getName());
+			showPointUI();
+			stu.outputStuInfo();
+		} else {
+			System.out.println("입력한 학번과 일치하는 학생 정보가 없습니다.");
 		}
-		if(!flag) System.out.println("존재하지 않는 학번입니다.");
 		
 	}
 	
@@ -175,6 +169,19 @@ public class Point {
 	
 	public void close() {
 		sc.close();
+	}
+	
+	private Student findInstance(String req, List<Student> list) {
+		System.out.printf("%s하실 학생의 학번을 입력하세요.\n", req);
+		System.out.print("> ");
+		String stuNum = sc.next();
+		
+		for(Student stu : list) {
+			if(stuNum.equals(stu.getStuId())) {
+				return stu;
+			}
+		}		
+		return null;
 	}
 	
 
